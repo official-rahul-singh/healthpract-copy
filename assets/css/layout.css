@@ -334,7 +334,7 @@ header ul li:first-child::before,
 
 .hero-header {
   /* background-image: url('../img/home-bg2.png'), linear-gradient(45deg, #002134 0%, #6dc1db 100%); */
-  background:url("/assets/img/hero-header.jpg"), gray;
+  background:url("../img/hero-header.jpg"), gray;
   background-size: cover;
   padding-top: 165px;
   padding-bottom:165px;
