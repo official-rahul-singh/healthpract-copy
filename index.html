@@ -40,6 +40,162 @@
          src: url('assets/fonts/be-vietnam-pro-v11-latin-700.woff2') format('woff2');
       }
    </style>
+
+<style>
+   .slider {
+       position: relative;
+       overflow: hidden;
+   }
+
+   .slider-wrap {
+       width: 100%;
+       transition: transform 0.5s ease;
+       box-sizing: content-box;
+       position: relative;
+       display: flex;
+   }
+
+   .slide-card {
+       width: 100%;
+       position: relative;
+       display: flex;
+       justify-content: center;
+       flex-shrink: 0;
+   }
+
+   .slider button {
+       cursor: pointer;
+
+   }
+
+   .Slider-Container {
+       width: 50%;
+       margin: auto;
+       background-color: var(--aut-bg);
+       padding: 30px;
+   }
+
+   /* main card style */
+   .account-card {
+       --color: var(--primary-color);
+       --meta-c: var(--text-muted);
+       --cat-c: var(--secondry-color);
+       background: var(--white);
+   }
+
+   .card-img,
+   .card-img img {
+       border-radius: 4px;
+       transition: all 0.5s;
+       width: 100%;
+       height: auto;
+       object-fit: cover;
+       position: relative;
+       aspect-ratio: 16 / 9;
+       background-color: #c7c7c7;
+   }
+
+   .account-card-content .cat-c {
+       font-weight: var(--fw-600);
+   }
+
+   .account-title {
+       color: var(--primary-color);
+       font-weight: var(--fw-600);
+   }
+
+   .author-cont {
+       background-color: var(--aut-bg);
+   }
+
+   .author-cont .author-n {
+       color: var(--secondry-color);
+   }
+
+   .account-title:hover,
+   .sub-author:hover {
+       color: var(--secondry-color);
+   }
+
+   .auhtor img {
+       border: 3px solid var(--white);
+   }
+
+   .border {
+       border: 1px solid var(--border);
+       border-radius: 4px;
+   }
+
+   .auhtor {
+       font-size: var(--fs-14) !important;
+   }
+
+   .border-bottom {
+       border-bottom: 1px solid var(--card-border);
+   }
+
+   .button-container {
+       display: flex;
+       justify-content: end;
+       margin-bottom: 20px;
+       gap: 10px;
+   }
+
+   .account-slide .read-more {
+       margin-top: auto !important;
+   }
+
+   .read-more:hover {
+       color: var(--red);
+   }
+
+   .button-container button {
+       background: var(--main-color);
+       /* border: unset; */
+       border-radius: 50%;
+       display: grid;
+       place-items: center;
+       width: 30px;
+       height: 30px;
+       box-shadow: 1px 1px 9px 1px rgba(0, 0, 0, 0.1);
+       cursor: pointer;
+   }
+
+   .button-container button svg path {
+       fill: #fff !important;
+
+   }
+
+   button:is(.button-next, .button-prev):disabled,
+   button:is(.button-next, .button-prev)[disabled] {
+       background: var(--white);
+   }
+
+   button:is(.button-next, .button-prev):disabled,
+   button:is(.button-next, .button-prev)[disabled] svg path {
+       fill: var(--main-color) !important;
+   }
+
+   .read-more:hover svg {
+       fill: var(--red);
+   }
+
+   .account-card-content {
+       display: flex;
+       flex-direction: column;
+       gap: 10px;
+       flex: 1;
+       /* padding: 10px; */
+       position: var(--position);
+   }
+
+   .slider .account-card-content {
+       padding: 20px;
+   }
+
+   /* main card style end */
+</style>
+
 </head>
 
 <body>
@@ -169,17 +325,8 @@
            <div class="d-flex dual-btn"> <a href="#" class="btn-outline">Latest Article</a>
             <a href="#" class="btn-outline">Calculator</a></div>
          </div>
-         <!-- <ul class="hero-points">
-            <li><img src="assets/img/update2.png" alt="">24/7 Always<br>
-               updated</li>
-            <li><img src="assets/img/expert2.png" alt="">Written by<br>
-               experts</li>
-            <li><img src="assets/img/professional-2.png" alt="">Reviewed by<br>
-               professionals</li>
-         </ul> -->
       </div>   
    </div>
-
   
       <div class="container container-space">
          <div class="hp-calc-sec">
@@ -189,53 +336,96 @@
                </div>
                <a href="#" class="btn-outline">View More</a>
             </div>
-            <div class="tools-box row">
-               <div class="col-lg-4 col-md-5 col-10">
-                  <div class="calculator">
-                    <div> <a href="#"><img src="assets/img/fitness.svg" alt="Mental Health" class="img-fluid"></a></div>
-                    <div class="card-content">
-                       <a href="#" class="card-title ">
-                          Body Fat Percentage Calculator</a>
-                    </div>
+            <div class="tools-box row slider account-slider-1">
+               <div class="button-container">
+                  <button class="button-prev" id="previous-arrow" disabled="">
+                      <div>
+                          <svg width="21" height="21" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                  d="m7.027 10.038 5.3125-5.3125c0.3672-0.36719 0.9609-0.36719 1.3242 0l0.8828 0.88281c0.3672 0.36719 0.3672 0.96094 0 1.3242l-3.7617 3.7695 3.7656 3.7656c0.3672 0.3672 0.3672 0.961 0 1.3242l-0.8828 0.8868c-0.3672 0.3672-0.9609 0.3672-1.3242 0l-5.3125-5.3125c-0.37109-0.3672-0.37109-0.961-0.00391-1.3282z">
+                              </path>
+                              <path
+                                  d="m7.027 10.038 5.3125-5.3125c0.3672-0.36719 0.9609-0.36719 1.3242 0l0.8828 0.88281c0.3672 0.36719 0.3672 0.96094 0 1.3242l-3.7617 3.7695 3.7656 3.7656c0.3672 0.3672 0.3672 0.961 0 1.3242l-0.8828 0.8868c-0.3672 0.3672-0.9609 0.3672-1.3242 0l-5.3125-5.3125c-0.37109-0.3672-0.37109-0.961-0.00391-1.3282z"
+                                  fill="#fff"></path>
+                          </svg>
+                      </div>
+                  </button>
+                  <button class="button-next" id="next-arrow">
+                      <div>
+                          <svg width="21" height="21" fill="none" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                  d="m14.101 11.345-5.3125 5.3125c-0.36719 0.3672-0.96094 0.3672-1.3242 0l-0.88281-0.8828c-0.36719-0.3672-0.36719-0.9609 0-1.3242l3.7656-3.7656-3.7656-3.7656c-0.36719-0.36719-0.36719-0.96094 0-1.3242l0.87891-0.89063c0.36718-0.36718 0.96093-0.36718 1.3242 0l5.3125 5.3125c0.3711 0.3672 0.3711 0.961 0.0039 1.3281z"
+                                  fill="#fff"></path>
+                          </svg>
+                      </div>
+                  </button>
+              </div>   
+               <div class="slider-wrap">
+                  <div class="slide-card">
+                     <div class="calculator">
+                        <div> <a href="#"><img src="assets/img/fitness.svg" alt="Mental Health" class="img-fluid"></a></div>
+                        <div class="card-content">
+                           <a href="#" class="card-title ">
+                              Body Fat Percentage</a>
+                              <a href="#" class="btn-outline">Calculator</a>
+                        </div>
+                      </div>
                   </div>
-                    </div>
-               <div class="col-lg-4 col-md-5 col-10">
-                  <div class="calculator">
-                    <div> <a href="#"><img src="assets/img/fitness.svg" alt="Mental Health" class="img-fluid"></a></div>
-                    <div class="card-content">
-                       <a href="#" class="card-title ">
-                          Body Fat Percentage Calculator</a>
-                    </div>
+                  <div class="slide-card">
+                     <div class="calculator">
+                        <div> <a href="#"><img src="assets/img/fitness.svg" alt="Mental Health" class="img-fluid"></a></div>
+                        <div class="card-content">
+                           <a href="#" class="card-title ">
+                              BMI Calculator</a>
+                              <a href="#" class="btn-outline">Calculator</a>
+                        </div>
+                      </div>
                   </div>
-                    </div>
-               <div class="col-lg-4 col-md-5 col-10">
-                  <div class="calculator">
-                    <div> <a href="#"><img src="assets/img/fitness.svg" alt="Mental Health" class="img-fluid"></a></div>
-                    <div class="card-content">
-                       <a href="#" class="card-title ">
-                          Body Fat Percentage Calculator</a>
-                    </div>
+                  <div class="slide-card">
+                     <div class="calculator">
+                        <div> <a href="#"><img src="assets/img/fitness.svg" alt="Mental Health" class="img-fluid"></a></div>
+                        <div class="card-content">
+                           <a href="#" class="card-title ">
+                              Body Fat Percentage</a>
+                              <a href="#" class="btn-outline">Calculator</a>
+                        </div>
+                      </div>
                   </div>
-                    </div>
-               <div class="col-lg-4 col-md-5 col-10">
-                  <div class="calculator">
-                    <div> <a href="#"><img src="assets/img/fitness.svg" alt="Mental Health" class="img-fluid"></a></div>
-                    <div class="card-content">
-                       <a href="#" class="card-title ">
-                          Body Fat Percentage Calculator</a>
-                    </div>
+                  <div class="slide-card">
+                     <div class="calculator">
+                        <div> <a href="#"><img src="assets/img/fitness.svg" alt="Mental Health" class="img-fluid"></a></div>
+                        <div class="card-content">
+                           <a href="#" class="card-title ">
+                              Body Fat Percentage</a>
+                              <a href="#" class="btn-outline">Calculator</a>
+                        </div>
+                      </div>
                   </div>
-                    </div>
-               <div class="col-lg-4 col-md-5 col-10">
-                  <div class="calculator">
-                    <div> <a href="#"><img src="assets/img/fitness.svg" alt="Mental Health" class="img-fluid"></a></div>
-                    <div class="card-content">
-                       <a href="#" class="card-title ">
-                          Body Fat Percentage Calculator</a>
-                    </div>
+                  <div class="slide-card">
+                     <div class="calculator">
+                        <div> <a href="#"><img src="assets/img/fitness.svg" alt="Mental Health" class="img-fluid"></a></div>
+                        <div class="card-content">
+                           <a href="#" class="card-title ">
+                              Body Fat Percentage</a>
+                              <a href="#" class="btn-outline">Calculator</a>
+                        </div>
+                      </div>
                   </div>
-                    </div>
+                  <div class="slide-card">
+                     <div class="calculator">
+                        <div> <a href="#"><img src="assets/img/fitness.svg" alt="Mental Health" class="img-fluid"></a></div>
+                        <div class="card-content">
+                           <a href="#" class="card-title ">
+                              Body Fat Percentage</a>
+                              <a href="#" class="btn-outline">Calculator</a>
+                        </div>
+                      </div>
+                  </div>
+              
+               </div>  
+              
             </div>
+            
          </div>
    </div>
  
@@ -430,6 +620,90 @@
    </button>
    <!-- footer end -->
    <script defer src="assets/js/main.js"></script>
+
+<script>
+        
+function accountSlider(slider) {
+    slider.forEach(config => {
+        let { className, slidesPerView, spaceBetween } = config;
+        const defaultSlidesPerView = slidesPerView || 2; // Default slidesPerView if not provided
+        const defaultSpaceBetween = spaceBetween || 20; // Default spaceBetween if not provided
+
+        const sliderParent = document.querySelector('.' + className);
+
+		if ( sliderParent ) {
+
+			const sliderWrap = sliderParent.querySelector('.slider-wrap');
+			const slideCards = sliderWrap.querySelectorAll('.slide-card');
+			let currentIndex = 0;
+			let slideWidth;
+	
+			function updateSlider() {
+				// Update slidesPerView based on window width
+				if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+					slidesPerView = 2; // Display two slides on tablets
+				} else if (window.innerWidth <= 600) {
+					slidesPerView = 1; // Display one slide on mobile
+				}
+	
+				// Calculate the width of the container
+				const containerWidth = sliderWrap.offsetWidth;
+	
+				// Calculate the width of each slide based on the formula
+				slideWidth = (containerWidth / slidesPerView) - ((slidesPerView - 1) * defaultSpaceBetween / slidesPerView);
+	
+				// Set the width and marginRight for each slide
+				for (let i = 0; i < slideCards.length; i++) {
+					slideCards[i].style.width = slideWidth + 'px';
+					slideCards[i].style.marginRight = defaultSpaceBetween + 'px';
+				}
+	
+				// Update button states after calculating slide size
+				updateButtonState();
+			}
+	
+			function goToNextSlide() {
+				currentIndex = (currentIndex + slidesPerView) % slideCards.length;
+				updateSliderPosition();
+			}
+	
+			function goToPrevSlide() {
+				currentIndex = (currentIndex - slidesPerView + slideCards.length) % slideCards.length;
+				updateSliderPosition();
+			}
+	
+			function updateSliderPosition() {
+				const translateValue = -currentIndex * (slideWidth + defaultSpaceBetween);
+				sliderWrap.style.transform = `translateX(${translateValue}px)`;
+				updateButtonState();
+			}
+	
+			function updateButtonState() {
+				sliderParent.querySelector('#previous-arrow').disabled = currentIndex === 0;
+				sliderParent.querySelector('#next-arrow').disabled = currentIndex + slidesPerView >= slideCards.length;
+			}
+	
+			// Initial calculation of slide size
+			updateSlider();
+	
+			// Recalculate slide size when the window is resized
+			window.addEventListener('resize', updateSlider);
+	
+			// Attach click events to navigation buttons
+			sliderParent.querySelector('#next-arrow').addEventListener('click', goToNextSlide);
+			sliderParent.querySelector('#previous-arrow').addEventListener('click', goToPrevSlide);
+
+		}
+		
+    });
+}
+
+// Usage
+accountSlider([
+    { className: 'slider', slidesPerView: 3, spaceBetween: 30 }
+]);
+</script>
+
 </body>
 
 </html>
